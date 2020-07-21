@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>멜론차트</title>
+    <style>
+        body > *{
+            all:unset;
+        }
+        .box{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .contents{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="topNav">
+        <a href="{% url 'crolling' %}"><button>일간 차트 다시 받아오기</button></a>
+    </div>
+    <div class="box">
+        {% for i in obj.all %}
+            <div class="contents">
+                <div class="rank">{{i.rank}}</div>
+                <div class="singerName">{{i.singerName}}</div>
+                <div class="songName">{{i.songName}}</div>
+                <div class="albumImg"><img src="{{i.imgSrc}}"></div>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
