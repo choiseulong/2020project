@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid{
+            display: grid;
+            gap: 10px;
+            /* grid-template-columns: repeat(4, 100px); */
+            grid-template-columns: [first-line] 100px [second-line] 100px [third-line] 100px [fourth-line] 100px [fifth-line];
+            grid-template-rows: repeat(4, 100px [sexy-line]);
+        }
+        .header{
+            background-color: violet;
+            /* grid-column: 1 / 5; */
+            /* grid-column: 1 / -1; */
+            grid-column: span 4;
+
+        }
+        .content{
+            background-color: turquoise;
+            /* grid-column: 1/-2; */
+            grid-column: first-line/fourth-line;
+            /* grid-row: 2/-2; */
+            /* grid-row: 2 / span 2; */
+            /* grid-row: span 2; */
+            grid-row: sexy-line 1/ sexy-line 3;
+        }
+        .nav{
+            background-color: tomato;
+            /* grid-row: 2/-2; */
+            grid-row: span 2;
+        }
+        .footer{
+            background-color: yellowgreen;
+            /* grid-column: 1/5; */
+            /* grid-column: 1 / -1; */
+            grid-column: span 4;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="header">
+
+        </div>
+        <div class="content">
+
+        </div>
+        <div class="nav">
+
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+</body>
+</html>
