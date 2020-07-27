@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid{
+            display: grid;
+            gap: 5px;
+            height: 100vh;
+            /* grid-template-columns: repeat(4, 1fr); */
+            /* 사용가능한공간을 모두 사용하고 비율대로 나눈다 fr */
+            
+            /* grid-template-rows: repeat(4, 1fr); */
+            /* 높이를 지정해줘야 한다 높이에서는  */
+
+            grid-template: 
+                [header-start] "header header header header" 1fr [header-end] 
+                [content-start] "content content content nav" 2fr [content-end] 
+                [footer-start] "footer footer footer footer" 1fr [footer-end]  / 1fr 1fr 1fr 1fr
+            ;
+        }
+        .header{
+            background-color: violet;
+            grid-area: header;
+        }
+        .content{
+            background-color: turquoise;
+            grid-area: content;
+        }
+        .nav{
+            background-color: tomato;
+            grid-area: nav;
+        }
+        .footer{
+            background-color: yellowgreen;
+            grid-area: footer;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="header">
+
+        </div>
+        <div class="content">
+
+        </div>
+        <div class="nav">
+
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+</body>
+</html>
