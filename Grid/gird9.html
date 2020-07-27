@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid{
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(5, minmax(100px, 1fr));
+            grid-template-rows: repeat(4, 100px);
+        }
+        .item:nth-child(odd){
+            background-color: tomato;
+        }
+        .item:nth-child(even){
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="item">46</div>
+        <div class="item">47</div>
+        <div class="item">48</div>
+        <div class="item">49</div>
+        <div class="item">50</div>
+        <div class="item">46</div>
+        <div class="item">47</div>
+        <div class="item">48</div>
+        <div class="item">49</div>
+        <div class="item">50</div>
+        <div class="item">49</div>
+        <div class="item">50</div>
+    </div>
+</body>
+</html>
