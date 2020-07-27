@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid{
+            display: grid;
+            color: white;
+            gap: 5px;
+            /* grid-template-columns: repeat(auto-fit, minmax(20px, max-content)); */
+            grid-template-columns: max-content min-content;
+            grid-auto-rows: 100px;
+            margin-bottom: 30px;
+        }
+        .item:nth-child(odd){
+            background-color: teal;
+        }
+        .item:nth-child(even){
+            background-color: violet;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="item">hello world</div>
+        <div class="item">hello world hello world </div>
+        <div class="item">hello world hello world hello world </div>
+        <div class="item">hello world </div>
+        <div class="item">hello world hello world </div>
+    </div>
+</body>
+</html>
