@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid{
+            display: grid;
+            gap: 10px;
+            grid-template-rows: repeat(4, 100px);
+        }
+        .item:nth-child(odd){
+            background-color: tomato;
+        }
+        .item:nth-child(even){
+            background-color: yellow;
+        }
+        .grid:first-child{
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        }
+        /* row 사이즈 내에서 최대 빈 column을 만들어줌 */
+        .grid:last-child{
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        }
+        /* 현재 요소를 늘려서 row에 맞춤 */
+    </style>
+</head>
+<body>
+    auto-fill
+    <div class="grid">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+    auto-fit
+    <div class="grid">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+    </div>
+</body>
+</html>
