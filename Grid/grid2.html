@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid{
+            display: grid;
+            grid-template-columns: auto 200px;
+            grid-template-rows: 100px repeat(2, 200px) 100px;
+            grid-template-areas: 
+            "header header header header"
+            "content content content nav"
+            "content content content nav"
+            "footer footer footer footer"
+            ;
+        }
+        .header{
+            background-color: violet;
+            grid-area: header;
+        }
+        .content{
+            background-color: turquoise;
+            grid-area: content;
+        }
+        .nav{
+            background-color: tomato;
+            grid-area: nav;
+        }
+        .footer{
+            background-color: yellowgreen;
+            grid-area: footer;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="header">
+
+        </div>
+        <div class="content">
+
+        </div>
+        <div class="nav">
+
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+</body>
+</html>
