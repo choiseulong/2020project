@@ -1,10 +1,23 @@
-@mixin link($word){
-    @if $word == 'odd'{
-        color: blue;
-    } @else{
-        color: red;
+$minIphone : 500px;
+$maxIphone : 690px;
+$minTablet : $minIphone + 1;
+$maxTable : 1120px;
+@mixin responsive($device) {
+    @if $device == 'iphone'{
+        @media screen and (min-width:$minIphone) and (max-width: $maxIphone){
+            @content;
+        }
+    }@else if $device == 'tablet'{
+        @media screen and (min-width:$minTablet) and (max-width:$maxTable){
+            @content;
+        }
+    }@else if $device == 'iphone-l'{
+        @media screen and (min-width:$minIphone) and (max-width: $maxIphone) and (orientation:landscape){
+            @content;
+        }
+    }@else if $device == 'ipad'{
+        @media screen and (min-width:$minTablet) and (max-width:$maxTable) and (orientation:landscape){
+            @content;
+        }
     }
-    font-size: 30px;
-    text-decoration: none;
-    display: block;
-} 
+}
