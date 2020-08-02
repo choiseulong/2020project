@@ -6,7 +6,7 @@ import time
 import requests
 from bs4 import BeautifulSoup
 from .models import test
-iamhuman = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36'}
+
 def index(request):
     obj = test.objects.all()
     return render(request, 'index.html', {"list":obj})
@@ -19,6 +19,7 @@ def save_DB(request):
             title=DB_List[i][0],
             link=DB_List[i][1]
         ).save()
+    print("success")
     return redirect('index')
 
 def collect_DB():
@@ -26,6 +27,7 @@ def collect_DB():
     # options.add_argument('headless')
     options.add_argument('window-size=1920x1080')
     options.add_argument('disable-gpu')
+    options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36')
     driver = webdriver.Chrome('webApp/chromedriver.exe', chrome_options=options)
     url = 'http://unilion.likelion.org/'
     driver.get(url)

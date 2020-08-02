@@ -21,7 +21,8 @@ def crolling(request):
     return redirect('index')
 
 def melonCrolling():
-    iamhuman = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36'}
+    iamhuman = {'User-Agent':
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36'}
     url = "https://www.melon.com/chart/day/index.htm"
     
     req = requests.get(url, headers=iamhuman)
@@ -40,12 +41,10 @@ def melonCrolling():
     ranks=[]
     for j in rank[1:]:
         ranks.append(j.text)
-
     albumImg = soup.select('td:nth-child(4) > div > a > img')
     imgs=[]
     for p in albumImg:
         imgs.append(p.get("src"))
-
     sumlist = list(zip(songs, singers, ranks, imgs))
     return sumlist
 
