@@ -4,5 +4,4 @@ import webApp.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', webApp.views.index, name="index"),
-    path('test/', webApp.views.test, name="test"),
 ]
