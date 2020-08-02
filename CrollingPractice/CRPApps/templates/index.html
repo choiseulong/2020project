@@ -6,34 +6,42 @@
     
     <title>멜론차트</title>
     <style>
-        body > *{
-            all:unset;
-        }
         .box{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-rows: repeat(auto-fit, 1fr);
         }
         .contents{
             margin: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .contents_text{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="topNav">
-        <a href="{% url 'crolling' %}"><button>일간 차트 다시 받아오기</button></a>
+    <div class="content">
+        <div class="topNav">
+            <a href="{% url 'crolling' %}"><button>일간 차트 다시 받아오기</button></a>
+        </div>
+        
+        <div class="box">
+            {% for i in obj.all %}
+                <div class="contents">
+                    <div class="albumImg"><img src="{{i.imgSrc}}"></div>
+                    <div class="contents_text">
+                        <div class="rank">{{i.rank}}위</div>
+                        <div class="singerName"><Br>{{i.singerName}}</div>
+                        <div class="songName"><br>{{i.songName}}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-    <div class="box">
-        {% for i in obj.all %}
-            <div class="contents">
-                <div class="rank">{{i.rank}}</div>
-                <div class="singerName">{{i.singerName}}</div>
-                <div class="songName">{{i.songName}}</div>
-                <div class="albumImg"><img src="{{i.imgSrc}}"></div>
-            </div>
-        {% endfor %}
-    </div>
-
 </body>
 </html>
