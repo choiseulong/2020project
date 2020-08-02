@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1> 유니라이언 </h1>
+    <a href="{% url 'save_DB' %}">가져오기</a>
     {% for i in list.all %}
         <ul>
             <li><a href="http://unilion.likelion.org{{i.link}}">강의 제목 : {{i.title}}</a></li>

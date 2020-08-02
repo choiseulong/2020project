@@ -7,10 +7,23 @@ import requests
 from bs4 import BeautifulSoup
 from .models import test
 iamhuman = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36'}
-
 def index(request):
+    obj = test.objects.all()
+    return render(request, 'index.html', {"list":obj})
+
+def save_DB(request):
+    test.objects.all().delete()
+    DB_List = collect_DB()
+    for i in range(len(DB_List)):
+        test(
+            title=DB_List[i][0],
+            link=DB_List[i][1]
+        ).save()
+    return redirect('index')
+
+def collect_DB():
     options = webdriver.ChromeOptions()
-    options.add_argument('headless')
+    # options.add_argument('headless')
     options.add_argument('window-size=1920x1080')
     options.add_argument('disable-gpu')
     driver = webdriver.Chrome('webApp/chromedriver.exe', chrome_options=options)
@@ -33,11 +46,7 @@ def index(request):
     for l in href:
         titleLink.append(l.attrs['href'])
     sumlist = list(zip(titleList, titleLink))
-    test.objects.all().delete()
-    for i in range(len(titleLink)):
-        test(
-            title=sumlist[i][0],
-            link=sumlist[i][1]
-        ).save()
-    obj = test.objects.all
-    return render(request, 'index.html', {"list":obj})
+    return sumlist
+
+
+# 참고 :http://blog.naver.com/PostView.nhn?blogId=kiddwannabe&logNo=221188260422&parentCategoryNo=&categoryNo=&viewDate=&isShowPopularPosts=false&from=postView 
