@@ -51,4 +51,5 @@ def collect_DB():
     return sumlist
 
 
+
 # 참고 :http://blog.naver.com/PostView.nhn?blogId=kiddwannabe&logNo=221188260422&parentCategoryNo=&categoryNo=&viewDate=&isShowPopularPosts=false&from=postView 
