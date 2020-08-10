@@ -1,11 +1,23 @@
 @charset 'utf-8';
 @import "_variables";
 
-body > * {
-    all: unset;
+.container{
+    display: flex;
 }
-
 button {
     color: $mainColor;
     font-size: $mainFontsize;
 }
+.box {
+    margin: 30px;
+    h1{
+        font-size: 100px;
+    }
+    button{
+        color: green;
+    }
+    &:hover{
+        background-color: black;
+    }
+}
+

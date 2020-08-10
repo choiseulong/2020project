@@ -1,5 +1,13 @@
-body > * { all: unset; }
+.container { display: flex; }
 
 button { color: red; font-size: 50px; }
+
+.box { margin: 30px; }
+
+.box h1 { font-size: 100px; }
+
+.box button { color: green; }
+
+.box:hover { background-color: black; }
 
 /*# sourceMappingURL=index.css.map */
