@@ -4,19 +4,25 @@ $minIpad : 768px;
 $maxIpad : 1024px;
 @mixin responsive($device) {
     @if $device == 'iphone'{
-        @media only screen and (min-device-width: $minIphone) and (max-device-width: $maxIphone) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait){
+        @media only screen and (min-device-width: $minIphone) 
+        and (max-device-width: $maxIphone) and (-webkit-min-device-pixel-ratio: 3) 
+        and (orientation: portrait){
             @content;
         }
     } @else if $device == 'ipad' {
-        @media only screen and (min-device-width : $minIpad) and (max-device-width : $maxIpad) and (orientation : portrait){
+        @media only screen and (min-device-width : $minIpad) 
+        and (max-device-width : $maxIpad) and (orientation : portrait){
             @content;
         }
     } @else if $device == 'iphone-l' {
-        @media only screen and (min-device-width: $minIphone) and (max-device-width: $maxIphone) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape){
+        @media only screen and (min-device-width: $minIphone) 
+        and (max-device-width: $maxIphone) and (-webkit-min-device-pixel-ratio: 3) 
+        and (orientation: landscape){
             @content;
         }
     } @else if $device == 'ipad-l' {
-        @media only screen and (min-device-width : $minIpad) and (max-device-width : $maxIpad) and (orientation : landscape){
+        @media only screen and (min-device-width : $minIpad) 
+        and (max-device-width : $maxIpad) and (orientation : landscape){
             @content;
         }
     }
