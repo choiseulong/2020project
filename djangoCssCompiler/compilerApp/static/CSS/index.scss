@@ -1,0 +1,24 @@
+@charset 'utf-8';
+@import "_variables";
+// @import "_mixins";
+// @import "_button";
+
+body > *{
+    all: unset;
+}
+.container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-rows: repeat(auto-fit, 1fr);
+    gap: 10px;
+    .item{
+        &:nth-child(odd){
+            color: $oddcolor;
+            background-color: black;
+        }
+        &:nth-child(even){
+            color: $evencolor;
+        }
+    }
+}
+
