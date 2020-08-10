@@ -1,7 +1,3 @@
-a { margin-bottom: 10px; }
-
-a:nth-child(odd) { text-decoration: none; display: block; font-size: 50px; color: blue; }
-
-a:nth-child(even) { text-decoration: none; display: block; font-size: 50px; color: yellow; }
+a, button { border-radius: 10px; font-size: 70px; text-transform: uppercase; padding: 7px 10px; background-color: peru; }
 
 /*# sourceMappingURL=index.css.map */
