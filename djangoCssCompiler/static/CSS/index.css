@@ -1,9 +1,5 @@
 body > * { all: unset; }
 
-.container { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); grid-template-rows: repeat(auto-fit, 1fr); gap: 10px; }
-
-.container .item:nth-child(odd) { color: blue; background-color: black; }
-
-.container .item:nth-child(even) { color: red; }
+button { color: red; font-size: 50px; }
 
 /*# sourceMappingURL=index.css.map */
