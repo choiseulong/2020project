@@ -1,13 +1,7 @@
-.container { display: flex; }
+a { margin-bottom: 10px; }
 
-button { color: red; font-size: 50px; }
+a:nth-child(odd) { text-decoration: none; display: block; font-size: 50px; color: blue; }
 
-.box { margin: 30px; }
-
-.box h1 { font-size: 100px; }
-
-.box button { color: green; }
-
-.box:hover { background-color: black; }
+a:nth-child(even) { text-decoration: none; display: block; font-size: 50px; color: yellow; }
 
 /*# sourceMappingURL=index.css.map */
