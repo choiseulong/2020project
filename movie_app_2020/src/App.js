@@ -1,26 +1,67 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import PropTypes from 'prop-types'
+
+const foodILike = [
+  {
+    id: 1,
+    name: "kimchi",
+    image: "https://www.bgw.kr/wp-content/uploads/2019/12/%EC%88%98%EC%9E%85%EA%B9%80%EC%B9%98.png",
+    rating: 5.1
+  },
+  {
+    id: 2,
+    name: "ramen",
+    image: "https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/01/a0001273/img/basic/a0001273_main.jpg?20200824193853&q=80&rw=750&rh=536",
+    rating: 5.2
+  },
+  {
+    id: 3,
+    name: "pig",
+    image: "data:image/jpeg;base64,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",
+    rating: 5.3
+  },
+  {
+    id: 4,
+    name: "한글",
+    image: "https://cdn.crowdpic.net/detail-thumb/thumb_d_F2E7E0E6CEC1D2DE7AEF97F8AD553B2B.jpg",
+    rating: 5.4
+  },
+]
+
+function Food({ fav, pic, rating }) {
+  // props // props.fav 같은거다
+  return (
+    <div>
+      <h1>i love { fav } <img src={ pic } width="300px" alt={ fav }/> </h1>
+      <h4>{ rating }/10</h4>
+    </div>
+  );
+}
+Food.propTypes = {
+  fav: PropTypes.string.isRequired,
+  pic: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {foodILike.map(dish => (
+        <Food 
+          key={dish.id} 
+          fav={dish.name} 
+          pic={dish.image} 
+          rating={dish.rating}/>
+      ))
+      }
+      {/* dish가 current object다 현재처리중인  */}
     </div>
   );
 }
 
 export default App;
+// Food component에 fav라는 이름의 property를 kimchi라는 value로 선언
+// 부모 component 에서 자식 component 로 많은 props를 보낼수있다.
+// component는 대문자로 시작해야된다
+// 복붙은 비효율적이다 동적 데이터를 추가해야 한다.
+// id는 고유한 props를 만들어주고 react 내부에서만 사용한다 Food 함수에 사용하지 않으니 내부에 작성할 필요가 없다
