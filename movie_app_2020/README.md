@@ -11,3 +11,41 @@ id는 고유한 props를 만들어주고 react 내부에서만 사용한다 Food
 state는 동적 테이터를 다룰때
 setState()를 사용하지 않으면 
 새롭게 정의한 state와 render function이 불러와지지 않는다.
+---------------------------------------------------------------
+import React from 'react';
+
+class App extends React.Component{
+// class component render method를 자동적으로 실행한다.
+  state = {
+    count: 0
+  };
+  add = () => {
+    this.setState(current => ({ count: current.count + 1 }))
+  };
+  minus = () => {
+    this.setState(current => ({ count: current.count - 1 }))
+  };
+  componentDidMount(){
+    console.log("conponent rendered");
+  }
+  //render가 실행됐을때
+  componentDidUpdate(){
+    console.log("컴포넌트가 업데이트 될때");
+  } 
+  //업데이트이후
+  componentWillUnmount(){
+    console.log("컴포넌트를 떠날때")
+  }
+  render() {
+    console.log("iamrendering");
+    return (
+        <div>
+          <h1>the number is {this.state.count}</h1>
+          <button onClick={this.add}>Add</button>
+          <button onClick={this.minus}>minus</button>
+        </div>
+      );
+  }
+}
+export default App;
+---------------------------------------------------------------
