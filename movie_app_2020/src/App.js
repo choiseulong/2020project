@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from "axios";
 import Movie from "./Movie";
-class App extends React.Component{
+import "./App.css";
+;class App extends React.Component{
   state={
     isLoading: true,
     movies: []
@@ -26,21 +27,27 @@ class App extends React.Component{
     const { isLoading, movies } = this.state;
   // 위에 선언된 state를 축약해서 사용하기 위해 선언 아니면 this.state.isLoading 처럼 풀네임을 적어줘야 하니깐
     return (
-        <div>
-          {isLoading 
-          ? "Loading" //true 라면 Loading string을 반환
-          : movies.map(movie => {  //false 라면 movie.map을 실행
-              return <Movie 
+        <section className="container">
+          {isLoading ? (
+          <div class="loader"> 
+            <span className="loader__text">Loading...</span>
+          </div> //true 라면 Loading string을 반환
+          ) : (
+            <div className="movies">
+              {movies.map(movie => (
+                <Movie 
                 key={movie.id}
                 id={movie.id} 
                 year={movie.year} 
                 title={movie.title} 
                 summary={movie.summary} 
                 poster={movie.medium_cover_image} 
+                genres={movie.genres}
               />
-            })
-          }
-        </div>
+              ))}
+            </div>
+          )}
+        </section>
     );
   }
 }
