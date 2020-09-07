@@ -1,0 +1,36 @@
+fetch(url)
+            .then(response=>response.json())
+            .then(function(msg){
+                for(var i =0; i<item_int; i++){
+                    var div = document.createElement('div');
+                    var low_div = document.createElement('div')
+                    var title_div = document.createElement('div')
+                    var br = document.createElement('br');
+
+                    var mp = document.createElement('p');
+                    mp.id = 'movieNm'
+
+                    title_div.id = 'title_div'
+                    low_div.id = 'low_div'
+                    div.id = 'movies'
+                    short_url = msg.movieListResult.movieList[i]
+       
+                    div.appendChild(title_div)
+                    div.appendChild(low_div)
+                    title.appendChild(div);
+                    
+                    var movieNm = document.createTextNode(short_url.movieNm);
+
+                    
+                    mp.appendChild(movieNm);
+
+
+                    title_div.appendChild(mp);
+
+
+
+
+
+                }
+                        
+            });
