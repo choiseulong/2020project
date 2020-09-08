@@ -7,47 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
-    <style>
-        body {
-            width: 100%;
-            height: 5000vh;
-            margin: 0;
-            padding: 0;
-            color: white;
-        }
-        .container{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            background-color: black;
-            color:#ff5a00;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-        .title{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .title img{
-            width: 300px;
-            position: relative;
-        }
-        .todayDate input{
-            border: 1px solid #c4c4c4;
-            border-radius: 5px;
-            background-color: #fff;
-            padding: 3px 5px;
-            box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
-        }
-    </style>
-
+    <link href="{% static 'CSS/index.css' %}" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
-
     <div class="container">
         <div class="title">
             <img src="{% static 'IMG/logo.png'%}" alt="logo" width="500px">
@@ -57,19 +20,17 @@
             <form name="todayDateForm" action="http://127.0.0.1:8000/">
                 <!-- <input type="number" name="todayDateInput" placeholder="입력 예시 _ 20200906"> -->
                 <input type="date" placeholder="test" name="todayDateInput" class="todayDateInput">
-                <input type="button" onclick="searchRank();" value="찾기"/>
+                <input type="button" onclick="searchRank();searchMoreInfo();" value="찾기"/>
             </form>
         </div>
             <div class="contentBox">
         </div>
             <div class="emptyBox">
         </div>
-        <div>
-            <button type="button" onclick="searchMoreInfo()">테스트</button>
-        </div>
     </div>
     
 
     <script type="text/javascript" src="{% static 'JS/searchData.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/searchInfo.js' %}"></script>
 </body>
 </html>

@@ -14,7 +14,6 @@ function searchRank(){  // 버튼 onclick 이벤트로 선언했어요
     const todayMovieRankUrl = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"
     + key
     + targetTodayDate;
-
     fetch(todayMovieRankUrl)
         .then(response => response.json()) // json으로 파싱
         .then(function (msg) {
@@ -23,7 +22,6 @@ function searchRank(){  // 버튼 onclick 이벤트로 선언했어요
                 movieRankJson = msg.boxOfficeResult.dailyBoxOfficeList[i]; // msg를 console에 찍어보면 알수있어요
                 DailyTitleArray[i] = movieRankJson.movieNm; // 랭킹10위까지있어서 10개 array에 담아주고
             }
-
             // 어떤 날짜 담았는지 보여줄려고 했어요 
             // 검색할때마다 해당 input value를 받아와서 가공을 거친 후 다시 돌려줍니다
             let addDateTitle = document.createElement('h1');
@@ -31,52 +29,40 @@ function searchRank(){  // 버튼 onclick 이벤트로 선언했어요
             let DateTitle = document.createTextNode(date2+"일 박스오피스");
             addDateTitle.appendChild(DateTitle);
             addDateTitle.classList.add("movieTitle");
+            addDateTitle.setAttribute("id", `${targetDate}`);
             emptyBox.appendChild(addDateTitle);// 거쳐가는 empty 박스 뒤에서 다시 넘겨줄거에요
 
             for (let i = 0; i < 10; i++) {
-                let addPtags = document.createElement('p');
+                let addBtn = document.createElement('button');
                 let addText = document.createTextNode(`${i+1}위 `+DailyTitleArray[i]);
-                addPtags.appendChild(addText);
-                emptyBox.appendChild(addPtags);
-                addPtags.classList.add("movieTitle");
+                addBtn.appendChild(addText);
+                emptyBox.appendChild(addBtn);
+                addBtn.classList.add("movieTitle");
+                addBtn.setAttribute("id", `${targetDate}`);
+                addBtn.setAttribute("value", `${DailyTitleArray[i]}`); // 뒤에 value 불러와야되어서 나중에 추가해줘야됨
             }
 
             let moviePackage = document.createElement('div');
             contentBox.appendChild(moviePackage);
             moviePackage.classList.add("moviePackage");
-            let moveContent = document.querySelectorAll(".movieTitle");
+
+            // let moveContent = document.querySelectorAll(".movieTitle");
+            let moveContent = emptyBox.querySelectorAll(".movieTitle");
             for(let i = 0; i < 11; i++){
                 moviePackage.appendChild(moveContent[i]);
             }
-            
+            DailyTitleArray = [];
+            giveOnclick = document.querySelectorAll('.movieTitle');
+            for(let i = 0; i < Object.keys(giveOnclick).length; i++){
+                giveOnclick[i].setAttribute("onclick","searchMoreInfo();iWantInfo(this);");
+            };
+            let h1DeleteOnclick = document.getElementsByTagName("h1");
+            // console.log(h1DeleteOnclick);
+            for(let i = 0; i < Object.keys(h1DeleteOnclick).length; i++){
+                h1DeleteOnclick[i].removeAttribute("onclick");
+            };
         });
 };
-function searchMoreInfo(){
-    const todayMovieRankUrl = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json"
-    + key
-    + "&targetDt=20200906"; // 나중에 movie 이름과 대조해서 쏴줘야 할거같다
-    const MovieInfo = async() =>{
-        try{
-            const response = await fetch(todayMovieRankUrl);
-            const data = await response.json();
-            let movieCodeObject = {}; // 영화정보 담을 Object
-            let movieNameArray = []; // 제목
-            let movieCodeArray = []; // 코드
-            for (let i = 0; i < 10; i++) {
-                movieJson = data.boxOfficeResult.dailyBoxOfficeList[i]; // msg를 console에 찍어보면 알수있어요
-                movieNameArray[i] = movieJson.movieNm;
-                movieCodeArray[i] = movieJson.movieCd;
-                movieCodeObject[movieNameArray[i]] = `${movieCodeArray[i]}`;
-            }
-            let doubleLayerList = Object.entries(movieCodeObject); // [[제목:코드],[제목:코드]] 꼴로 리스트도 가능
-            return doubleLayerList
-        } catch(err){
-            return console.error("에러에요");
-        }
-    }
-    console.log(MovieInfo());
-}
-
 /* // input에서 정보를 받아올거에요 어떤정보를 받아올까요? 우린 일간랭크를 받아올거거든요
 // 그리고 값을 fetch에 쏴줄꺼에요 그래야 url에 쓸꺼니깐요
 // return값을 어떻게 받아올까요?  onclick 로 처리해줄거에요
@@ -97,23 +83,81 @@ function searchMoreInfo(){
 // 잘 안되는거 같더라구요 그런데 async & await를 사용하니깐 바로 return을 할수있네요.
 // 이제 영화상세정보 api를 통해서 해당 코드를 검색하고 필요한 상세정보를 담아서 return해 줄게요 
  */
-
-
-/*     function test() {fetch(todayMovieRankUrl)
-        .then(response => response.json()) // json으로 파싱
-        .then(function (msg) {
-            let movieCodeObject = {}; // 영화정보 담을 Object
-            let movieNameArray = []; // 제목
-            let movieCodeArray = []; // 코드
-            for (let i = 0; i < 10; i++) {
-                movieJson = msg.boxOfficeResult.dailyBoxOfficeList[i]; // msg를 console에 찍어보면 알수있어요
-                movieNameArray[i] = movieJson.movieNm;
-                movieCodeArray[i] = movieJson.movieCd;
-                movieCodeObject[movieNameArray[i]] = `${movieCodeArray[i]}`;
+/* 
+console.log(total[0]);
+if(bigArray.length > 1){
+    for(let j = 0; j < bigArray.length; j++){
+        for(let k = 1; k < bigArray.length; k++){
+            for(let i = 0; i<10; i++){
+                if(bigArray[j][i]==bigArray[k][i]){
+                    let checkArray = [];
+                    checkArray[i]="okay";
+                    console.log(checkArray);
+                    if(checkArray.length==10){
+                        bigArray.splice(k,1);
+                        checkArray = [];
+                    }
+                } 
             }
-            let doubleLayerList2 = Object.entries(movieCodeObject); // [[제목:코드],[제목:코드]] 꼴로 리스트도 가능
-            return doubleLayerList2
-        }); 
+        }
     }
-    console.log(test()); */
-    //안되더라구요
+}//같으면 지워라...... */
+
+/* 
+function DataFuc(){
+    if(bigArray.length >= 1){
+        for(let i = 0; i<bigArray.length; i++){
+            for(let j=0; j<10; j++){
+                if(bigArray[i][j] == addData[j]){
+                    let checknum = 0;
+                    checknum ++;
+                    if(checknum == 10){
+                        break;
+                    }
+                } else if (bigArray[i][j] != addData[j]){
+                    let checknum = 0;
+                    checknum ++;
+                    if (checknum == 10*bigArray.length){
+                        bigArray.push(addData);
+                    }
+                }
+            }
+        }
+        console.log(`검사를 끝냅니다`);
+        console.log(bigArray);
+    } else {
+        bigArray.push(addData);
+        console.log(bigArray);
+    }
+} */
+
+/* const addDataFuc = async() => {
+    await function DataFuc(){
+        if(bigArray.length >= 1){
+            for(let i = 0; i<bigArray.length; i++){
+                for(let j=0; j<10; j++){
+                    if(bigArray[i][j] == addData[j]){
+                        let checknum = 0;
+                        checknum ++;
+                        if(checknum == 10){
+                            console.log("일치하는 배열이 있습니다");
+                            break;
+                        }
+                    } else if (bigArray[i][j] != addData[j]){
+                        let checknum = 0;
+                        checknum ++;
+                        if (checknum == 10*bigArray.length){
+                            bigArray.push(addData);
+                            console.log(`배열 추가`);
+                            break;
+                        }
+                    }
+                }
+            }
+        } else {
+            bigArray.push(addData);
+            console.log(`처음 추가`);
+            console.log(bigArray);
+        }
+    }
+} */
