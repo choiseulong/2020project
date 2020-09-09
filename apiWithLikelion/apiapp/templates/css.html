@@ -9,21 +9,23 @@
     <link href="{% static 'CSS/11.css' %}" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="container">
-        <div class="title">
-            <img src="{% static 'IMG/logo.png' %}" alt="logo" width="300px">
-            <h1>KOBIS 오픈API</h1>
-        </div>
-        <div class="todayDate">
-            <form name="todayDateForm" class="todayDateForm" action="http://127.0.0.1:8000/test">
+    <div class="top">
+        <img src="{% static 'IMG/logo.png' %}" alt="logo" width="300px">
+        <h1>API 만지기</h1>
+    </div>
+    <div class="middle">
+        <div class="form">
+            <form name="todayDateForm" action="http://127.0.0.1:8000/test">
                 <input type="date" name="todayDateInput" class="todayDateInput">
-                <input type="button" onclick="clickedSearchBtn();" value="찾기" class="todayDateInput"/>
-                <input type="button" onclick="reload()" value="페이지 비우기" class="todayDateInput"/>
+                <input type="button" onclick="clicked();" value="찾기" class="todayDateInput"/>
             </form>
         </div>
         <div class="contents">
 
         </div>
+    </div>
+    <div class="bottom">
+
     </div>
     <script src="{% static 'JS/test.js' %}" type="text/javascript"></script>
 </body>

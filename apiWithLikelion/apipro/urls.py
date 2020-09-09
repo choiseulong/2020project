@@ -19,4 +19,5 @@ import apiapp.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', apiapp.views.index, name="index"),
+    path('test/', apiapp.views.test, name="test"),
 ]
