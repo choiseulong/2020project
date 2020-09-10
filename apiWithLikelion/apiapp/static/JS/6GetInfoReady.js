@@ -33,7 +33,7 @@ const clickedSearchBtn = async() => {
             let textBox = document.createElement('button');
             contentsBox.appendChild(createDiv).appendChild(textBox).appendChild(text);
             textBox.setAttribute("value",`${movieRankJson}`);
-            textBox.setAttribute("onclick", "showMeTheCode(this);clickedMovieBtn(this)");
+            textBox.setAttribute("onclick", "clickedMovieBtn(this);");
             // showMeTheCode 를 통해서 해당 코드에 대한 API의 Promise Object를 받아왔을겁니다
             // clickedMovieBtn 를 통해서 이전에 받은 Promise Object 를 가공해서 어딘가로 쏴줄려고 합니다.
             // this를 clickedMovieBtn에 넣지 않으니 오류가 나더라구요? 넣어줍시다 

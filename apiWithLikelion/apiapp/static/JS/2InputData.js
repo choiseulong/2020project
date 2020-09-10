@@ -19,7 +19,7 @@ const key = "?key=c9b76986468427bb85c2e8928316a530";
 // input의 onclick="clicked();"에 해당하는 내용이에요
 /* 우리가 거치는 과정은 아래와 같아요
 클릭 -> value 전달 -> json url 수정 -> promise object 전달 -> 다시 한번 rank 정보 입력 */ 
-const clicked = async() => { // 클릭하면 해당 함수가 실행됩니다.
+const clickedSearchBtn = async() => { // 클릭하면 해당 함수가 실행됩니다.
     await giveRankObject() // givegiveRankObject 함수를 실행하게 되죠. 해당 함수를 먼저 봅시다
     .then((data) => { // 이제부터는 같은 과정이니 생략!
             for (let i = 0; i < 10; i++) {

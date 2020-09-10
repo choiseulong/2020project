@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바 테스트 페이지</title>
+    <link rel="shortcut icon" href="#" />
+    <!-- 3번 파일 할 때 주석 해제 -->
+    <!-- <link href="{% static 'CSS/home.css' %}" rel="stylesheet" type="text/css" /> -->
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <img src="{% static 'IMG/logo.png' %}" alt="logo" width="300px">
+            <h1>KOBIS 오픈API</h1>
+        </div>
+        <!-- 2번 파일 할 때 주석 해제 -->
+<!--         <div class="todayDate">
+            <form name="todayDateForm" class="todayDateForm" action="http://127.0.0.1:8000/">
+                <input type="date" name="todayDateInput" class="todayDateInput">
+                <input type="button" onclick="clickedSearchBtn();" value="찾기" class="todayDateInput"/>
+            </form>
+        </div> -->
+        <div class="contents">
+            <!-- 7번 파일 할 때 주석 해제 -> form 태그 안으로 넣기 -->
+            <!-- <input type="button" onclick="reload()" value="페이지 비우기" class="todayDateInput"/> -->
+        </div>
+    </div>
+    <script src="{% static 'JS/home.js' %}" type="text/javascript"></script>
+</body>
+</html>

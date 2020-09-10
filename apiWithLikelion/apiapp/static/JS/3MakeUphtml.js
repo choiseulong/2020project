@@ -10,7 +10,7 @@ document.querySelector(".todayDateInput").value = new Date((new Date()) - 1000*6
 let contentsBox = document.querySelector('.contents');
 const key = "?key=c9b76986468427bb85c2e8928316a530";
 
-const clicked = async() => {
+const clickedSearchBtn = async() => {
     await giveRankObject()
     .then((data) => {
         let DtYear = data.boxOfficeResult.showRange.substring(0,4);

@@ -10,7 +10,6 @@ const key = "?key=c9b76986468427bb85c2e8928316a530";
 let movieCodeObject = {};
 let movieNameArray = [];
 let movieCodeArray = []; 
-let titleCheck = [];
 const clickedSearchBtn = async () => {
     try{
         await giveRankObject()
@@ -19,33 +18,22 @@ const clickedSearchBtn = async () => {
                 let DtMonth = data.boxOfficeResult.showRange.substring(4,6);
                 let DtDate = data.boxOfficeResult.showRange.substring(6,8);
                 let dateTitle = document.createTextNode(`${DtYear}년 ${DtMonth}월 ${DtDate}일 박스 오피스`);
-                titleCheck.push(dateTitle);
-                for(let i = 0; i < titleCheck.length; i++){
-                    for(let j = i+1; i< titleCheck.length; j++){
-                        if(titleCheck.length==0){
-                            // titleCheck.length>1 && titleCheck[i]!=titleCheck[j]
-                            let titleBox = document.createElement('h1');
-                            let createDiv = document.createElement('div');
-                            createDiv.classList.add("moviePackage");
-                            contentsBox.appendChild(createDiv).appendChild(titleBox).appendChild(dateTitle);
-                            for (let i = 0; i < 10; i++) {
-                                let movieRankJson = data.boxOfficeResult.dailyBoxOfficeList[i].movieNm; 
-                                let movieCodeJson = data.boxOfficeResult.dailyBoxOfficeList[i].movieCd; 
-                                let text = document.createTextNode(`${i+1}위 `+movieRankJson);
-                                let textBox = document.createElement('button');
-                                contentsBox.appendChild(createDiv).appendChild(textBox).appendChild(text);
-                                textBox.setAttribute("value",`${movieRankJson}`);
-                                textBox.setAttribute("onclick", "clickedMovieBtn(this);");
-                                textBox.setAttribute("class", "movieContents");
-                                movieNameArray[i] = `${movieRankJson}`;  
-                                movieCodeArray[i] = `${movieCodeJson}`; 
-                                movieCodeObject[movieNameArray[i]] = `${movieCodeArray[i]}`;
-                            } 
-                        } else if (titleCheck[i]==titleCheck[j]){
-                            console.log("Stop");
-                            break;
-                        };    
-                    };
+                let titleBox = document.createElement('h1');
+                let createDiv = document.createElement('div');
+                createDiv.classList.add("moviePackage");
+                contentsBox.appendChild(createDiv).appendChild(titleBox).appendChild(dateTitle);
+                for (let i = 0; i < 10; i++) {
+                    let movieRankJson = data.boxOfficeResult.dailyBoxOfficeList[i].movieNm; 
+                    let movieCodeJson = data.boxOfficeResult.dailyBoxOfficeList[i].movieCd; 
+                    let text = document.createTextNode(`${i+1}위 `+movieRankJson);
+                    let textBox = document.createElement('button');
+                    contentsBox.appendChild(createDiv).appendChild(textBox).appendChild(text);
+                    textBox.setAttribute("value",`${movieRankJson}`);
+                    textBox.setAttribute("onclick", "clickedMovieBtn(this);");
+                    textBox.setAttribute("class", "movieContents");
+                    movieNameArray[i] = `${movieRankJson}`;  
+                    movieCodeArray[i] = `${movieCodeJson}`; 
+                    movieCodeObject[movieNameArray[i]] = `${movieCodeArray[i]}`;
                 };
             });
     }catch(error){

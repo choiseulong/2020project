@@ -26,8 +26,8 @@ body{
 }
 .title img{
     width: 300px;
-    left: 0;
-    top: 0;
+    left: 10px;
+    top: 20px;
     position: absolute;
 }
 .middle{
@@ -79,7 +79,7 @@ body{
 }
 .moviePackage h1{
     color:#ff5a00;
-    font-size: 3em;
+    font-size: 2.5em;
     text-align: center;
 }
 .movieContents{
