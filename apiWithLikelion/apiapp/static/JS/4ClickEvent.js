@@ -5,7 +5,11 @@
 2. 클릭시 해당 태그의 정보를 받아오구요
 3. 오류는 어디에!?
 */
-document.querySelector(".todayDateInput").value = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+let lastDay = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+let dateInput = document.querySelector(".todayDateInput");
+dateInput.value = lastDay;
+dateInput.setAttribute("max", lastDay);
+
 let contentsBox = document.querySelector('.contents');
 const key = "?key=c9b76986468427bb85c2e8928316a530";
 

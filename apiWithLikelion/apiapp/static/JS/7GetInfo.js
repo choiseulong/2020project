@@ -5,7 +5,11 @@
 2. 출연진이 너무 많을 때 표시될 인원 수 제한하고
 3. try & catch 맛보기로 다룰거구요
 */
-document.querySelector(".todayDateInput").value = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+let lastDay = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+let dateInput = document.querySelector(".todayDateInput");
+dateInput.value = lastDay;
+dateInput.setAttribute("max", lastDay);
+
 let contentsBox = document.querySelector('.contents');
 const key = "?key=c9b76986468427bb85c2e8928316a530";
 let movieCodeObject = {};

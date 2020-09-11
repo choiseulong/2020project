@@ -8,7 +8,11 @@
 4. async & await & promise object 찐하게 맛보기
 */
 
-document.querySelector(".todayDateInput").value = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+let lastDay = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+let dateInput = document.querySelector(".todayDateInput");
+dateInput.value = lastDay;
+dateInput.setAttribute("max", lastDay);
+
 let contentsBox = document.querySelector('.contents');
 const key = "?key=c9b76986468427bb85c2e8928316a530";
 let movieCodeObject = {};

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="a">
+        <p>여기에 영화 제목이 담겨요</p>
+    </div>
+
+    <script type="text/javascript">
+        let title = document.querySelector(".a");
+        const key = "?key=c9b76986468427bb85c2e8928316a530"; // key값 부여받은거 가져오기
+        const itemnum = "&itemPerPage=10"; // api제공 사이트에서 알려준 itemPerPage 나는 10개
+        const url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json"
+            + key 
+            + itemnum;
+        fetch(url)
+        .then(response=>response.json())
+        .then(function(msg){
+            for(let i = 0; i<10; i++){
+                short_url = msg.movieListResult.movieList[i];
+                let movieNm = document.createTextNode(short_url.movieNm);
+                title.appendChild(movieNm);
+            }
+        });
+    </script>
+</body>
+</html>

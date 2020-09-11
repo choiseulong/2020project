@@ -5,7 +5,11 @@
 1. reload button 추가 합니다
 2. 한번 상세정보를 받아온 영화는 onclick을 비활성화 할거에요
 */
-document.querySelector(".todayDateInput").value = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+let lastDay = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+let dateInput = document.querySelector(".todayDateInput");
+dateInput.value = lastDay;
+dateInput.setAttribute("max", lastDay);
+
 let contentsBox = document.querySelector('.contents');
 const key = "?key=c9b76986468427bb85c2e8928316a530";
 let movieCodeObject = {};

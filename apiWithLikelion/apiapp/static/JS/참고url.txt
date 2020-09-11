@@ -1,4 +1,6 @@
 https://jsdev.kr/t/fetch-return/5137 // return하기
 https://developer.mozilla.org/ko/docs/Web/API/Fetch_API/Fetch%EC%9D%98_%EC%82%AC%EC%9A%A9%EB%B2%95 // fetch mozilla 문서
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/async_function
 https://programmingsummaries.tistory.com/325
+https://blueshw.github.io/2018/02/27/async-await/
 등등등

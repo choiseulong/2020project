@@ -12,7 +12,12 @@
 // input 의 기본값을 먼저 '어제' 날짜로 설정해줬어요.
 // 어제 날짜로 설정하는 방법은 구글링 했어요 Date 정보를 string으로 바꿔서 
 // 원하는 정보를 잘라서 가져오는 형식이에요.
-document.querySelector(".todayDateInput").value = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+// input date max 값도 어제로 설정했어요
+let lastDay = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+let dateInput = document.querySelector(".todayDateInput");
+dateInput.value = lastDay;
+dateInput.setAttribute("max", lastDay);
+
 let contentsBox = document.querySelector('.contents');
 const key = "?key=c9b76986468427bb85c2e8928316a530";
 

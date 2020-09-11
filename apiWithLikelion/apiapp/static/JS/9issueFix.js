@@ -1,13 +1,18 @@
-/* 
-이슈 수정 & 코드 정리
-
+/* 이슈 수정 & 코드 정리
 1. "*등 영화이름"이 담기는 button 태그를 div로 변경
     (clickedSearchBtn, showMeTheCode 수정)
-
 2. 상세정보 onclick 비활성화 문제 해결
     (clickedMovieBtn 3번째 then)
-*/
-document.querySelector(".todayDateInput").value = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+3. throwRankObjectFunc 는 함수 내에서 비동기처리가 필요없기 때문에 async를 지워줬습니다 
+throwMoreInfoFunc 는 함수 내에서는 비동기처리가 필요없지만 clickedMovieBtn 
+.then()으로 처리하는 부분이 남아있어서 async를 지우지 않았어요  
+4.
+5. 코드 실행 순서 표기*/
+let lastDay = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
+let dateInput = document.querySelector(".todayDateInput");
+dateInput.value = lastDay;
+dateInput.setAttribute("max", lastDay);
+
 let contentsBox = document.querySelector('.contents');
 const key = "?key=c9b76986468427bb85c2e8928316a530";
 let movieCodeObject = {};
@@ -40,7 +45,7 @@ const giveRankObject = async() => {
         console.log("giveRankObject Success");
     }
 };
-const throwRankObjectFunc = async(data) =>{
+const throwRankObjectFunc = (data) =>{
     try{
         let DtYear = data.boxOfficeResult.showRange.substring(0,4);
         let DtMonth = data.boxOfficeResult.showRange.substring(4,6);
@@ -100,9 +105,9 @@ const showMeTheCode = async(clickedValue) => {
         console.log("showMeTheCode Success");
     }
 };
-const CodeInMovieObj = async(iWantedValue) => {
+const CodeInMovieObj = async(clickedValue) => {
     try{
-        let iWantedCode = movieCodeObject[iWantedValue];
+        let iWantedCode = movieCodeObject[clickedValue];
         return await iWantedCode;
     }catch(error){
         console.log(`CodeInMovieObj 에러 발생 ${error.name}:${error.message}`);
@@ -177,8 +182,7 @@ function reload(){
     setTimeout(location.reload(), 3000);
     alert("페이지가 새로고침 됩니다.");
 };
-/* 
-실행되는 순서
+/* 실행되는 순서
 검색 버튼 클릭 ->
 home.js:30 giveRankObject Success
 home.js:58 throwRankObjectFunc Success
@@ -190,5 +194,22 @@ home.js:113 searchMoreInfo Success
 home.js:89 showMeTheCode Success
 home.js:162 throwMoreInfoFunc Success
 home.js:76 clickedMovieBtn Success
-<- 영화 제목 클릭
-*/
+<- 영화 제목 클릭 */
+
+/* 비동기코드로 동기식처럼 처리하고자 했으면
+이런느낌으로 쌓아야 됐지않았나~
+clickedSearchBtn(
+    giveRankObject(
+        throwRankObjectFunc(
+
+        )
+    )
+    clickedMovieBtn(
+        CodeInMovieObj(
+            showMeTheCode(
+                throwMoreInfoFunc(
+                )
+            )
+        )
+    )
+) */

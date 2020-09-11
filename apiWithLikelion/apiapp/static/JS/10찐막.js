@@ -1,19 +1,30 @@
+/* 찐막ver
+다 만들어놓고 왜 이렇게 비동기로 처리해야 하는지
+이용하는 사람들의 입장에서 생각을 안했더라구요
+그냥 내가 하는데 이 정보가 필요한데 
+시간이 걸리니 꼭 처리하면 넘겨달라고만 했더라구요
+넘어오기 전엔 계속 흑백화면인데 말이죠!
+그래서 넘어오기전에 보여줄 이미지를 추가했고
+박스오피스정보를 찾을때 사라지고
+페이지를 비우면 다시 들어오게 후딱 했어요 
+*/
 let lastDay = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
 let dateInput = document.querySelector(".todayDateInput");
 dateInput.value = lastDay;
 dateInput.setAttribute("max", lastDay);
+
 let contentsBox = document.querySelector('.contents');
-let BackImg = document.querySelector("#img");
+let BackImg = document.querySelector("#img"); 
 const key = "?key=c9b76986468427bb85c2e8928316a530";
 let movieCodeObject = {};
 let movieNameArray = [];
 let movieCodeArray = []; 
-let checkNum = 0;
+let checkNum = 0; // 찾기 눌렀을때 단 한번만 처리하기 위해서 체크넘버를 선언했어요
 const clickedSearchBtn = async () => {
     try{
         if(BackImg.classList.contains("fadeIn")){
             BackImg.classList.replace("fadeIn", "fadeOut");
-        };
+        }; // fadeIn 이 있으면 true를 반납해요. 그럼 fadeIn을 fadeOut 으로 바꿔달라 했죠
         let rankObject = await giveRankObject();
         let receivedObject = await throwRankObjectFunc(rankObject)
         .then(()=>{
@@ -21,7 +32,8 @@ const clickedSearchBtn = async () => {
                 contentsBox.removeChild(BackImg);
                 checkNum ++;
             }
-        })
+        }) // 일단 정보를 다 받아온 뒤에 삭제해달라고 했습니다 아니면 더블클릭해야
+        // 영화 상세정보가 들어와서요 display none을 처음엔 해봤거든요
     }catch(error){
         console.log(`clickedSearchBtn 에러 발생 ${error.name}:${error.message}`);
     }finally{
@@ -49,7 +61,7 @@ const throwRankObjectFunc = async(data) =>{
         let DtYear = data.boxOfficeResult.showRange.substring(0,4);
         let DtMonth = data.boxOfficeResult.showRange.substring(4,6);
         let DtDate = data.boxOfficeResult.showRange.substring(6,8);
-        let dateTitle = document.createTextNode(`${DtYear}년 ${DtMonth}월 ${DtDate}일`);
+        let dateTitle = document.createTextNode(`${DtYear}년 ${DtMonth}월 ${DtDate}일`); // 박스오피스 글씨 제거
         let titleBox = document.createElement('h1');
         let createDiv = document.createElement('div');
         createDiv.classList.add("moviePackage");
