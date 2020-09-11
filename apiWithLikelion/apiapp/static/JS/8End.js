@@ -1,11 +1,9 @@
 /* 마지막입니다. 7번 js 파일 버전에서는 상세정보가 하염없이 계속해서
 추가되고 또 또 또 계속 되는걸 눈치채셨나요? 그걸 해결하고 
 페이지를 새로고침해서 받아왔던 정보를 초기화하는 버튼을 만들어줄게요.
-마지막으로 함수의 위치나 들여쓰기같은거를 한번 체크해볼게요
 < Contents >
 1. reload button 추가 합니다
 2. 한번 상세정보를 받아온 영화는 onclick을 비활성화 할거에요
-3. 코드정리
 */
 document.querySelector(".todayDateInput").value = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
 let contentsBox = document.querySelector('.contents');

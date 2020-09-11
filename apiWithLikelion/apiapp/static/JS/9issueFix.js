@@ -1,3 +1,12 @@
+/* 
+이슈 수정 & 코드 정리
+
+1. "*등 영화이름"이 담기는 button 태그를 div로 변경
+    (clickedSearchBtn, showMeTheCode 수정)
+
+2. 상세정보 onclick 비활성화 문제 해결
+    (clickedMovieBtn 3번째 then)
+*/
 document.querySelector(".todayDateInput").value = new Date((new Date()) - 1000*60*60*24).toISOString().substring(0,10);
 let contentsBox = document.querySelector('.contents');
 const key = "?key=c9b76986468427bb85c2e8928316a530";
@@ -174,10 +183,12 @@ function reload(){
 home.js:30 giveRankObject Success
 home.js:58 throwRankObjectFunc Success
 home.js:14 clickedSearchBtn Success
+<- 검색 버튼 클릭 
 영화 제목 클릭 ->
 home.js:99 CodeInMovieObj Success
 home.js:113 searchMoreInfo Success
 home.js:89 showMeTheCode Success
 home.js:162 throwMoreInfoFunc Success
 home.js:76 clickedMovieBtn Success
+<- 영화 제목 클릭
 */
